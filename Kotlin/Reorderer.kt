@@ -1,15 +1,16 @@
 import java.io.File
 
 fun main() {
-    File("data")
+    File("datxxxa")
         .walk()
         .maxDepth(1)
         .filter { it.isFile }
+        .filter { it.extension == "md"}
         .map { file -> file.useLines { lines -> findOrder(lines) } to file }
         .filter { (order, _ ) -> order != null }
         .sortedBy { (order, _) -> order }
         .map { (_, file) -> file }
-        .mapIndexed { index, file -> "" + index * 5 to file }
+        .mapIndexed { index, file -> "${index * 5}" to file }
         .forEach { (index, file) -> replaceOrder(file, index) }
 }
 
