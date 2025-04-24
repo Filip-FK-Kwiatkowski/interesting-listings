@@ -6,7 +6,7 @@ class PlayerRow(
     val nameAndSurname: String,
     var totalPoints: Int,
     val points: MutableList<Int?> = mutableListOf(),
-): Comparable<PlayerRow> {
+) : Comparable<PlayerRow> {
     fun recalculateTotalPoints() {
         totalPoints = points.filterNotNull().sum()
     }
@@ -36,10 +36,10 @@ class PlayerRow(
 }
 
 fun main() {
-    val path ="path/to/your/file.md"
+    val path = "path/to/your/file.md"
     val playerRows = File(path).useLines { lines ->
         lines
-            .filter{ it.startsWith('|') }
+            .filter { it.startsWith('|') }
             .drop(2)
             .map(PlayerRow::fromLine)
             .toMutableList()
