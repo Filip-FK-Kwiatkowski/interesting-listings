@@ -3,7 +3,7 @@ package org.example
 import java.io.File
 
 fun main() {
-    val path = "path/to/your/file.md"
+    val path = "path/to/your/dir/with/md-files"
 
     File(path)
         .walk()
